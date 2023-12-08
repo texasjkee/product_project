@@ -4,6 +4,7 @@ import { lazy } from 'react';
 
 // Loading simulation
 export const MainPageAsync = lazy(() => new Promise(resolve => {
+    const SECOND = 0;
     // @ts-ignore
-    setTimeout(() => resolve(import('./MainPage')), 1500)
+    setTimeout(() => resolve(import('./MainPage')), SECOND)
 }));
