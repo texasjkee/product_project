@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
-import './Counter.scss';
+
+import classes from './Counter.module.scss';
 
 interface CouterProps { };
 
@@ -11,7 +12,7 @@ export const Counter: FC<CouterProps> = () => {
     return (
         <>
             <h1>{count}</h1>
-            <button onClick={increase} >+</button>
+            <button className={classes.btn} onClick={increase } >+</button>
         </>
     )
 };
