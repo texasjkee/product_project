@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-
+import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { classNames } from "shared/lib/classNames/classNames";
-import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 
 import style from "./Navbar.module.scss";
 
@@ -12,10 +10,9 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
     return (
         <div className={classNames(style.navbar, {}, [className])}>
-            <ThemeSwitcher />
             <div className={style.links}>
-                <Link to={'/'} className={style.mainLink}>Main</Link>
-                <Link to={'/about'}> About</Link>
+                <AppLink to={'/'} theme={AppLinkTheme.SECONDARY}>Main</AppLink>
+                <AppLink to={'/about'} theme={AppLinkTheme.RED}>About</AppLink>
             </div>
         </div>
     )
