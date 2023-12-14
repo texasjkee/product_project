@@ -8,7 +8,6 @@ import { Sidebar } from "widgets/Sidebar";
 
 import './styles/index.scss';
 
-
 export const App = () => {
     const { theme } = useTheme();
 
