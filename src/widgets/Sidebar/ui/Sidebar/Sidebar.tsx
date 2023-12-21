@@ -1,15 +1,20 @@
 import { useState } from "react";
+import { t } from "i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 import { LanguageSwitcher } from "widgets/LanguageSwitcher/LanguageSwitcher";
-import { Button } from "shared/ui/Button/Button";
+import { Button, ButtonSize, ThemeButton } from "shared/ui/Button/Button";
+import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import MainIcon from 'shared/assets/icons/main-20-20.svg';
+import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 
 import style from "./Sidebar.module.scss";
 
-interface SidebarProps {
+export interface SidebarProps {
     className?: string;
-};
+}
 
 export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -24,13 +29,41 @@ export const Sidebar = ({ className }: SidebarProps) => {
             <Button
                 data-testid="sidebar-toggle"
                 onClick={handleToggle}
+                className={style.collapsedBtn}
+                theme={ThemeButton.BACKGROUND_INVERTED}
+                size={ButtonSize.L}
+                square
             >
-                toggle
+                {collapsed ? '>' : '<'}
             </Button>
+            <div className={style.items}>
+                <AppLink className={style.item}
+                    to={RoutePath.main}
+                    theme={AppLinkTheme.SECONDARY}
+                >
+                    <MainIcon className={style.icon} />
+                    <span className={style.link}>
+                        {t('Main')}
+                    </span>
+                </AppLink>
+                <AppLink className={style.item}
+                    to={RoutePath.about}
+                    theme={AppLinkTheme.SECONDARY}
+                // className={style.mainLink}
+                >
+                    <AboutIcon className={style.icon} />
+                    <span className={style.link}>
+                        {t('About')}
+                    </span>
+                </AppLink>
+            </div>
             <div className={style.switchers}>
                 <ThemeSwitcher />
-                <LanguageSwitcher className={style.lang} />
+                <LanguageSwitcher
+                    short={collapsed}
+                    className={style.lang}
+                />
             </div>
         </div>
-    )
+    );
 };
