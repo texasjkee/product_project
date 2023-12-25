@@ -7,7 +7,7 @@
     "start": "webpack serve --env port=3000 ",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "unit": "jest --config ./config/jest/jest.config.ts",
+    "test:unit": "jest --config ./config/jest/jest.config.ts",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "build-storybook": "storybook build -c ./config/storybook"
   },
@@ -62,12 +62,14 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
     "i18next": "^23.7.8",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.4.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^13.5.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1"
   }
 }
